@@ -1,4 +1,9 @@
 ﻿using Autofac;
+using AutoMapper;
+using E_CommerceApp.Application.AutoMapper;
+using E_CommerceApp.Application.Services.AdminService;
+using E_CommerceApp.Domain.Repositories;
+using E_CommerceApp.Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,8 +16,22 @@ namespace E_CommerceApp.Application.IoC
     {
         protected override void Load(ContainerBuilder builder)
         {
-            
-            base.Load(builder);
+            builder.RegisterType<EmployeeRepo>().As<IEmployeeRepo>().InstancePerLifetimeScope();
+            builder.RegisterType<AdminService>().As<IAdminService>().InstancePerLifetimeScope();
+            builder.Register(context => new MapperConfiguration(cfg =>
+            {                
+                cfg.AddProfile<Mapping>();
+            }
+                        )).AsSelf().SingleInstance();
+
+            builder.Register(c =>
+            {                
+                var context = c.Resolve<IComponentContext>();
+                var config = context.Resolve<MapperConfiguration>();
+                return config.CreateMapper(context.Resolve);
+            })
+            .As<IMapper>()
+            .InstancePerLifetimeScope();
         }
     }
 }

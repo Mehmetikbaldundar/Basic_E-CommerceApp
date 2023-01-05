@@ -18,7 +18,7 @@ namespace E_CommerceApp.Infrastructure.EntityTypeConfiguration
 
             builder.HasOne(x => x.Mall)
                 .WithMany(x => x.Employees)
-                .HasForeignKey(x => x.Id)
+                .HasForeignKey(x => x.MallId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasMany(x => x.Employees)
