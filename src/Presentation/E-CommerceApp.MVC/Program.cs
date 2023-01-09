@@ -32,7 +32,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         HttpOnly = true 
     };
     _.ExpireTimeSpan = TimeSpan.FromMinutes(15);
-    _.SlidingExpiration = false;
+    _.SlidingExpiration = true;
     _.Cookie.MaxAge = _.ExpireTimeSpan;
 });
 

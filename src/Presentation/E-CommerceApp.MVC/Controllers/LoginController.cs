@@ -46,6 +46,10 @@ namespace EcommerceApp.MVC.Controllers
                 {
                     return RedirectToAction("Index", "Admin", new { area = "Admin" });
                 }
+                if (loggedUser.Roles == Roles.Manager)
+                {
+                    return RedirectToAction("Index", "Manager", new { area = "Manager" });
+                }
 
                 await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
                 HttpContext.Response.Cookies.Delete(CookieAuthenticationDefaults.AuthenticationScheme);

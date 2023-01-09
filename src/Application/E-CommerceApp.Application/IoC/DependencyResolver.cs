@@ -19,6 +19,7 @@ namespace E_CommerceApp.Application.IoC
         {
             builder.RegisterType<EmployeeRepo>().As<IEmployeeRepo>().InstancePerLifetimeScope();
             builder.RegisterType<AdminService>().As<IAdminService>().InstancePerLifetimeScope();
+            builder.RegisterType<ManagerService>().As<IManagerService>().InstancePerLifetimeScope();
             builder.RegisterType<LoginService>().As<ILoginService>().InstancePerLifetimeScope();
             builder.Register(context => new MapperConfiguration(cfg =>
             {                
