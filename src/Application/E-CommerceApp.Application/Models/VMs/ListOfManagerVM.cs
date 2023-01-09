@@ -13,5 +13,6 @@ namespace E_CommerceApp.Application.Models.VMs
         public string Name { get; set; }
         public string Surname { get; set; }
         public Roles Roles { get; set; }
+        public string ImagePath { get; set; }
     }
 }

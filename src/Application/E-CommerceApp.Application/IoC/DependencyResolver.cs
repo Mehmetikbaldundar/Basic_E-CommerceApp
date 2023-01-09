@@ -2,6 +2,7 @@
 using AutoMapper;
 using E_CommerceApp.Application.AutoMapper;
 using E_CommerceApp.Application.Services.AdminService;
+using E_CommerceApp.Application.Services.LoginService;
 using E_CommerceApp.Domain.Repositories;
 using E_CommerceApp.Infrastructure.Repositories;
 using System;
@@ -18,6 +19,7 @@ namespace E_CommerceApp.Application.IoC
         {
             builder.RegisterType<EmployeeRepo>().As<IEmployeeRepo>().InstancePerLifetimeScope();
             builder.RegisterType<AdminService>().As<IAdminService>().InstancePerLifetimeScope();
+            builder.RegisterType<LoginService>().As<ILoginService>().InstancePerLifetimeScope();
             builder.Register(context => new MapperConfiguration(cfg =>
             {                
                 cfg.AddProfile<Mapping>();
@@ -32,6 +34,8 @@ namespace E_CommerceApp.Application.IoC
             })
             .As<IMapper>()
             .InstancePerLifetimeScope();
+
+            base.Load(builder);
         }
     }
 }

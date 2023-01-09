@@ -19,7 +19,7 @@ namespace E_CommerceApp.Domain.Entities
         public DateTime? UpdatedDate { get; set; }
         public DateTime BirthDate { get; set; }
         public Status Status { get; set; }
-        public Roles Roles { get; set; }
+        public Roles Roles { get; set; }       
         public string? ImagePath { get; set; }
         [NotMapped]
         public IFormFile UploadPath { get; set; }

@@ -12,5 +12,9 @@ namespace E_CommerceApp.Application.Services.AdminService
     {
         Task CreateManager(AddManagerDTO addManagerDTO);
         Task<List<ListOfManagerVM>> GetManagers();
+        Task<UpdateManagerDTO> GetManager(Guid id);
+        Task UpdateManager(UpdateManagerDTO updateManagerDTO);
+
+        Task DeleteManager(Guid id);
     }
 }
